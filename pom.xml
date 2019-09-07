@@ -14,8 +14,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <!--<maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>-->
+        <surefire-plugin-version>3.0.0-M3</surefire-plugin-version>
+        <compiler-plugin-version>3.8.0</compiler-plugin-version>
+        <assertj-core-version>3.9.1</assertj-core-version>
+        <jupiter-api-version>5.3.0</jupiter-api-version>
+        <jupiter-platform-version>1.1.0</jupiter-platform-version>
     </properties>
 
     <dependencies>
@@ -23,7 +29,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.9.1</version>
+            <version>${assertj-core-version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -31,32 +37,38 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.1.0</version>
+            <version>${jupiter-api-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.1.0</version>
+            <version>${jupiter-api-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.1.0</version>
+            <version>${jupiter-api-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.1.0</version>
+            <version>${jupiter-platform-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>1.1.0</version>
+            <version>${jupiter-platform-version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <version>${surefire-plugin-version}</version>
         </dependency>
 
     </dependencies>
@@ -66,18 +78,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${compiler-plugin-version}</version>
                 <configuration>
-                    <release>11</release>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>${surefire-plugin-version}</version>
                 <configuration>
                     <argLine>
-                        --illegal-access=permit
+                        &#45;&#45;illegal-access=permit
                     </argLine>
                     <includes>
                         <include>**/Test*.java</include>
@@ -87,13 +99,14 @@
                     </includes>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>${surefire-plugin-version}</version>
                 <configuration>
                     <argLine>
-                        --illegal-access=permit
+                        &#45;&#45;illegal-access=permit
                     </argLine>
                 </configuration>
             </plugin>

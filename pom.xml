@@ -77,8 +77,14 @@
                 <version>2.22.0</version>
                 <configuration>
                     <argLine>
-                        &#45;&#45;illegal-access=permit
+                        --illegal-access=permit
                     </argLine>
+                    <includes>
+                        <include>**/Test*.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*Test*.java</include>
+                        <include>**/*Spec*.java</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -87,7 +93,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <argLine>
-                        &#45;&#45;illegal-access=permit
+                        --illegal-access=permit
                     </argLine>
                 </configuration>
             </plugin>
